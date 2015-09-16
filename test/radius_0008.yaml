@@ -1,0 +1,7 @@
+pattern: RADIUS
+data: "Login incorrect: [<no User-Name attribute>] (from client client.example.com port 8102 cli D0-B2-12-B4-F7-BB)"
+results:
+        status: "Login incorrect"
+        error: "no User-Name attribute"
+        client: "client.example.com"
+        mac: "D0-B2-12-B4-F7-BB"

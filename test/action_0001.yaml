@@ -1,0 +1,7 @@
+pattern: VSFTPD_ACTION
+data: "[newuser] OK LOGIN: Client \"192.168.1.1\""
+result:
+        vsftpd_user: newuser
+        vsftpd_action_status: OK                
+        vsftpd_action: LOGIN
+        vsftpd_client_ip: 192.168.1.1

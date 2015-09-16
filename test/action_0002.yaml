@@ -1,0 +1,10 @@
+pattern: VSFTPD_ACTION
+data: "[newuser] OK UPLOAD: Client \"192.168.1.1\", \"/transfert.ACK\", 7 bytes, 0.17Kbyte/sec"
+result:
+        vsftpd_user: newuser
+        vsftpd_action_status: OK                
+        vsftpd_action: UPLOAD
+        vsftpd_client_ip: 192.168.1.1
+        vsftpd_file: "/transfert.ACK"
+        vsftpd_file_size: "7 bytes"
+        vsftpd_file_transfer_speed: "0.17Kbyte/sec"

@@ -1,0 +1,9 @@
+pattern: VSFTPD_ACTION
+data: "[newuser] FAIL DOWNLOAD: Client \"192.168.1.1\", \"/transfert.ACK\", 0.00Kbyte/sec"
+result:
+        vsftpd_user: newuser
+        vsftpd_action_status: FAIL
+        vsftpd_action: DOWNLOAD
+        vsftpd_client_ip: 192.168.1.1
+        vsftpd_file: "/transfert.ACK"
+        vsftpd_file_transfer_speed: "0.00Kbyte/sec"

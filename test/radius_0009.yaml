@@ -1,0 +1,5 @@
+pattern: RADIUS
+data: "rlm_eap: SSL error error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca"
+results:
+        module: "eap"
+        error: "SSL error error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca"

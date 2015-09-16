@@ -1,0 +1,6 @@
+pattern: RADIUS
+data: "Login OK: [user@example.com] (from client client.example.com port 0 via TLS tunnel)"
+results:
+        status: "Login OK"
+        username: "user@example.com"
+        client: "client.example.com"

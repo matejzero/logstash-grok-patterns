@@ -1,0 +1,5 @@
+pattern: RADIUS
+data: "rlm_radutmp: Logout entry for NAS aps1.osicljutomer port 1 has wrong ID"
+results:
+        module: "radutmp"
+        error: "Logout entry for NAS aps1.osicljutomer port 1 has wrong ID"

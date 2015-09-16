@@ -1,0 +1,5 @@
+pattern: RADIUS
+data: "rlm_sql (sql): Connected new DB handle, #9"
+results:
+        module: "sql"
+        error: "Connected new DB handle, #9"

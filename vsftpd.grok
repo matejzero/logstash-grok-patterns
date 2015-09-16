@@ -1,0 +1,3 @@
+# common vsftpd patterns
+VSFTPD_CONNECT %{WORD:vsftpd_action}: Client \"%{IP:vsftpd_client_ip}\"
+VSFTPD_ACTION \[%{DATA:vsftpd_user}\] %{WORD:vsftpd_action_status} %{WORD:vsftpd_action}: Client \"%{IP:vsftpd_client_ip}\"(, \"%{GREEDYDATA:vsftpd_file}\", %{DATA:vsftpd_file_size}, %{DATA:vsftpd_file_transfer_speed}|, \"%{GREEDYDATA:vsftpd_file}\", %{DATA:vsftpd_file_transfer_speed}|)$

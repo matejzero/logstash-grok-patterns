@@ -1,0 +1,7 @@
+pattern: RADIUS
+data: "Login OK: [user@example.com] (from client client.example.com port 1 cli D0-B2-12-B4-F7-BB)"
+results:
+        status: "Login OK"
+        username: "user@example.com"
+        client: "client.example.com"
+        mac: "D0-B2-12-B4-F7-BB"

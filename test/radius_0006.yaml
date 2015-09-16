@@ -1,0 +1,7 @@
+pattern: RADIUS
+data: "Login incorrect: [user@example.com] (from client client.example.com port 33 cli D0-B2-12-B4-F7-BB via TLS tunnel)"
+results:
+        status: "Login incorrect"
+        username: "user@example.com"
+        client: "client.example.com"
+        mac: "D0-B2-12-B4-F7-BB"

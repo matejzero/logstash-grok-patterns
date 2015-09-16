@@ -1,0 +1,8 @@
+pattern: RADIUS
+data: "Login incorrect (Home Server says so): [user@example.com] (from client client.example.com port 2 cli D0-B2-12-B4-F7-BB)"
+results:
+        status: "Login incorrect"
+        error: "Home Server says so"
+        username: "user@example.com"
+        client: "client.example.com"
+        mac: "D0-B2-12-B4-F7-BB"
