@@ -1,0 +1,11 @@
+# Grok filters for dhcpd logs
+
+# Custom grok patterns
+
+### Custom
+# Custom DHCPD logs for AAI
+# 1 client: 10.0.3.106, mac: 0:25:b3:bf:94:88, shared network: 1345_edu-test
+DHCPD_CUSTOM_AAI client: %{IP:client}, mac: %{MAC:mac}, shared network: %{GREEDYDATA:shared_network}
+
+DHCPD (%{DHCPD_CUSTOM_AAI})
+
