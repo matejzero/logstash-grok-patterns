@@ -1,0 +1,6 @@
+pattern: DOVECOT_LMTP
+data: "lmtp(32347): Connect from local"
+results:
+        proto: "lmtp"
+        user: "32347"
+        status_message: "Connect from local"

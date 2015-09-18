@@ -1,0 +1,84 @@
+
+#### Dovecot standard presets
+RIP_LIP rip=%{IP:rip}, lip=%{IP:lip}
+DOVECOT_HEADER %{WORD:proto}-login: %{DATA:status_message}:
+TWO_WORDS \w+\s\w+
+LMTP lmtp
+
+# Email
+#EMAILADDRESSPART [a-zA-Z0-9_.+-=:]+
+#EMAILADDRESS %{USERNAME:user}@%{HOSTNAME:domain}
+USEROREMAIL %{USERNAME:user}(@%{HOSTNAME:domain})?
+
+#### LOGINS
+# Successful logins pop3/imap
+# 1  pop3-login: Login: user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, mpid=8056, secured, session=<QWvifIcOtQBUFOyV>
+# 2  pop3-login: Login: user=<username@domain.com>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, mpid=8056, secured, session=<QWvifIcOtQBUFOyV>
+DOVECOT_LOGIN %{WORD:proto}-login: %{WORD:conn_status}: user=<(%{USEROREMAIL})?>, method=%{WORD:method}, rip=%{IP:rip}, lip=%{IP:lip}, mpid=%{NUMBER:mpid}(, %{WORD:crypto})?, session=<%{DATA:session}>
+
+#### DISCONNECTS
+# IMAP/POP3 successful logout
+# 3  imap(username): Disconnected: Logged out in=93 out=956
+# 4  pop3(username): Disconnected: Logged out top=0/0, retr=0/0, del=0/0, size=0
+# 5  imap(username): Disconnected: Disconnected in IDLE in=415 out=19066
+# 6  imap(username): Disconnected: Disconnected in APPEND (1 msgs, 0 secs, 0/215477 bytes) in=3166 out=144312
+# 7  pop3(username): Connection closed: Connection reset by peer top=0/0, retr=2/82331, del=6/168, size=50085176
+#
+DOVECOT_DISCONNECT1 %{WORD:proto}\(%{USERNAME:user}\): (%{TWO_WORDS:conn_status}|%{WORD:conn_status}): %{DATA:status_message} (in=%{NONNEGINT:bytes_in} out=%{NONNEGINT:bytes_out}|top=%{NUMBER}/%{NUMBER}, retr=%{NUMBER}/%{NUMBER}, del=%{NUMBER}/%{NUMBER}, size=%{NUMBER})
+# 8  imap(username): Connection closed in=4573 out=47788
+DOVECOT_DISCONNECT2 %{WORD:proto}\(%{USERNAME:user}\): %{TWO_WORDS:conn_status} (in=%{NONNEGINT:bytes_in} out=%{NONNEGINT:bytes_out}|top=%{NUMBER}/%{NUMBER}, retr=%{NUMBER}/%{NUMBER}, del=%{NUMBER}/%{NUMBER}, size=%{NUMBER})
+# 9  imap(username): Disconnected for inactivity in=687 out=10791
+DOVECOT_DISCONNECT3 %{WORD:proto}\(%{USERNAME:user}\): %{WORD:conn_status} %{DATA:status_message} (in=%{NONNEGINT:bytes_in} out=%{NONNEGINT:bytes_out}|top=%{NUMBER}/%{NUMBER}, retr=%{NUMBER}/%{NUMBER}, del=%{NUMBER}/%{NUMBER}, size=%{NUMBER})
+# Authentation failed
+# 10  imap-login: Disconnected (auth failed, 1 attempts in 4 secs): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<afeKFIcOYgAFPe0N>
+# 11  pop3-login: Aborted login (auth failed, 1 attempts): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5
+# 12  pop3-login: Aborted login (auth failed, 1 attempts): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, TLS
+# 13  pop3-login: Aborted login (auth failed, 1 attempts): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, session=<afeKFIcOYgAFPe0N>
+# 14  pop3-login: Aborted login (auth failed, 1 attempts): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<23hKXMAPuwBZ1MSq>
+DOVECOT_DISCONNECT4 %{WORD:proto}-login: (%{TWO_WORDS:conn_status}|%{WORD:conn_status}) \(%{DATA:status_message}\): user=<(%{USEROREMAIL:user})?>, method=%{WORD:method}, rip=%{IP:rip}, lip=%{IP:lip}, %{WORD:crypto}, session=<%{DATA:session}>
+# No auth attempt
+# 15  imap-login: Disconnected (no auth attempts in 0 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS handshaking, session=<ssjRzuwPIwBZ1Ck5>
+# 16  pop3-login: Disconnected (no auth attempts in 75 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS: Disconnected, session=<u3bbz+wPcgAfD+Zs>
+# 17  pop3-login: Disconnected (no auth attempts in 120 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS, session=<CMUdzuwP3wBZjk8I>
+# 18  imap-login: Disconnected: Inactivity (no auth attempts in 180 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS handshaking, session=<6F6rxuwPogAuetGx>
+# 19  pop3-login: Disconnected: Inactivity (no auth attempts): rip=2.2.2.2, lip=5.5.5.5, TLS handshaking
+# 20  pop3-login: Disconnected (no auth attempts in 60 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS handshaking: Disconnected, session=</vJpquwPugAuetLh>
+# 21  pop3-login: Disconnected (no auth attempts in 0 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS handshaking: SSL_accept() failed: error:140760FC:SSL routines:SSL23_GET_CLIENT_HELLO:unknown protocol, session=<N296hewPSgAueh8K>
+DOVECOT_DISCONNECT5 %{WORD:proto}-login: (%{TWO_WORDS:conn_status}|%{WORD:conn_status})(%{DATA})? \(%{DATA:status_message}\):( user=<>,)? rip=%{IP:rip}, lip=%{IP:lip}, %{WORD:crypto}(\,|:)?( %{DATA:error},)?( session=<%{DATA:session}>)?
+# 22  pop3-login: Disconnected (no auth attempts): rip=2.2.2.2, lip=5.5.5.5, TLS handshaking: SSL_accept() failed: error:150760FC:SSL routines:SSL23_GET_CLIENT_HELLO:unknown protocol
+# 23  pop3-login: Aborted login (no auth attempts): rip=2.2.2.2, lip=5.5.5.5
+# 24  pop3-login: Aborted login (no auth attempts in 0 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, session=<Q4nfkMAPTQDBAhKu>
+DOVECOT_DISCONNECT6 %{WORD:proto}-login: (%{TWO_WORDS:conn_status}|%{WORD:conn_status}) \(%{DATA:status_message}\): (user=<(%{USERNAME:user})?>, )?rip=%{IP:rip}, lip=%{IP:lip}(, session=<%{DATA:session}>)?(, %{GREEDYDATA:error})?
+DOVECOT_DISCONNECT (%{DOVECOT_DISCONNECT1}|%{DOVECOT_DISCONNECT2}|%{DOVECOT_DISCONNECT3}|%{DOVECOT_DISCONNECT4}|%{DOVECOT_DISCONNECT5}|%{DOVECOT_DISCONNECT6})
+### PROXY
+# Started proxying
+# 25  imap-login: proxy(username): started proxying to 2.2.2.2:143: user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<GKEBFAwQMgDBAgFf>
+# 26  pop3-login: proxy(username): started proxying to 2.2.2.2:110: user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, session=<udMDFAwQWQDU6/2a>
+# 27  imap-login: proxy(username): started proxying to 2.2.2.2:143: user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, TLS, session=<LGL0EwwQOQBOmTSo>
+DOVECOT_PROXY1 %{WORD:proto}-login: %{WORD:proxy}\(%{USEROREMAIL}\): started %{WORD:proxy_start} to %{IPORHOST:proxyto_host}:%{POSINT:proxyto_port}: user=<(%{USERNAME}(@%{HOSTNAME})?)?>, method=%{WORD:method}, rip=%{IP:rip}, lip=%{IP:lip}(, %{WORD:crypto})?, session=<%{DATA:session}>
+# Disconnecting
+# 28  pop3-login: proxy(username): disconnecting 2.2.2.2 (Disconnected by server): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, TLS, session=<gg7JEwwQ6QDBTZ2t>
+# 29  pop3-login: proxy(username): disconnecting 2.2.2.2 (Disconnected by server): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, session=<9J/3EwwQFwDZSF8F>
+# 30  imap-login: proxy(username): disconnecting 2.2.2.2 (Disconnected by server): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<GKEBFAwQMgDBAgFf>
+# 31  imap-login: proxy(username): disconnecting 2.2.2.2 (Disconnected by client: Connection reset by peer): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, TLS, session=<tk+T3O4PowDULq55>
+# 32  pop3-login: proxy(username@example.com): disconnecting 2.2.2.2 (Disconnected by server): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, session=<9J/3EwwQFwDZSF8F>
+DOVECOT_PROXY2 %{WORD:proto}-login: %{WORD:proxy}\(%{USEROREMAIL}\): %{WORD:conn_status} %{IPORHOST} \(%{DATA:status_message}\): user=<(%{USERNAME}(@%{HOSTNAME})?)?>, method=%{WORD:method}, rip=%{IP:rip}, lip=%{IP:lip}(, (session=<%{DATA:session}>|%{WORD:crypto}, session=<%{DATA:session}>|%{WORD:crypto}))?
+DOVECOT_PROXY3 %{WORD:proto}-login: %{WORD:proxy}\(%{USEROREMAIL}\): %{WORD:conn_status} %{IP:rip}
+DOVECOT_PROXY (%{DOVECOT_PROXY1}|%{DOVECOT_PROXY2}|%{DOVECOT_PROXY3})
+
+### EXCEEDED
+# Max number of connections is exceeded
+#  33 imap-login: Maximum number of connections from user+IP exceeded (mail_max_userip_connections=50): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<at1XQPAPJABUFPIj>
+DOVECOT_EXCEEDED %{WORD:proto}-login: %{DATA:conn_status} \(%{DATA:status_message}\): user=<(%{USERNAME:user})?>, method=%{WORD:method}, rip=%{IP:rip}, lip=%{IP:lip}(, (session=<%{DATA:session}>|%{WORD:crypto}, session=<%{DATA:session}>|%{WORD:crypto}))?
+
+### LMTP logs
+# 34  lmtp(32352): Disconnect from local: Successful quit
+# 35  lmtp(32347): Connect from local
+# 36  lmtp(username): iUi8BBUI2FRbfgAAA15QOA: msgid=<E1YKcnl-0001q3-UM@example.com>: saved mail to INBOX
+DOVECOT_LMTP %{WORD:proto}\(%{USERNAME:user}\): (%{WORD:session}: )?(msgid=<%{DATA:msgid}>: )?%{GREEDYDATA:status_message}
+
+### Indexer
+# 37  indexer-worker(username): Indexed 10 messages in mail/Sent Messages
+DOVECOT_INDEXER %{WORD:proto}-worker\(%{USERNAME:user}\): Indexed %{NUMBER:msg_count} messages in %{GREEDYDATA:folder}
+
+DOVECOT (%{DOVECOT_LOGIN}|%{DOVECOT_DISCONNECT}|%{DOVECOT_PROXY}|%{DOVECOT_INDEXER}|%{DOVECOT_LMTP}|%{DOVECOT_EXCEEDED})

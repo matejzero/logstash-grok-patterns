@@ -1,0 +1,12 @@
+pattern: DOVECOT
+data: "imap-login: Maximum number of connections from user+IP exceeded (mail_max_userip_connections=50): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<at1XQPAPJABUFPIj>"
+results:
+        proto: "imap"
+        conn_status: "Maximum number of connections from user+IP exceeded"
+        status_message: "mail_max_userip_connections=50"
+        user: "username"
+        method: "PLAIN"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        crypto: "secured"
+        session: "at1XQPAPJABUFPIj"

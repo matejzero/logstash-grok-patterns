@@ -1,0 +1,9 @@
+pattern: DOVECOT
+data: "imap(username): Disconnected: Disconnected in APPEND (1 msgs, 0 secs, 0/215477 bytes) in=3166 out=144312"
+results:
+        proto: "imap"
+        user: "username"
+        conn_status: "Disconnected"
+        status_message: "Disconnected in APPEND (1 msgs, 0 secs, 0/215477 bytes)"
+        bytes_in: 3166
+        bytes_out: 144312

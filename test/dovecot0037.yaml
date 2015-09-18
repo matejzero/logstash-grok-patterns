@@ -1,0 +1,7 @@
+pattern: DOVECOT
+data: "indexer-worker(username): Indexed 10 messages in mail/Sent Messages"
+results:
+        proto: "indexer"
+        user: "username"
+        msg_count: 10
+        folder: "mail/Sent Messages"

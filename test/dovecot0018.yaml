@@ -1,0 +1,11 @@
+pattern: DOVECOT
+data: "imap-login: Disconnected: Inactivity (no auth attempts in 180 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS handshaking, session=<6F6rxuwPogAuetGx>"
+results:
+        proto: "imap"
+        conn_status: "Disconnected"
+        status_message: "no auth attempts in 180 secs"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        crypto: "TLS"
+        error: "handshaking"
+        session: "6F6rxuwPogAuetGx"

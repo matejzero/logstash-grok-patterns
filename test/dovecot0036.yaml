@@ -1,0 +1,8 @@
+pattern: DOVECOT
+data: "lmtp(username): iUi8BBUI2FRbfgAAA15QOA: msgid=<E1YKcnl-0001q3-UM@example.com>: saved mail to INBOX"
+results:
+        proto: "lmtp"
+        user: "username"
+        session: "iUi8BBUI2FRbfgAAA15QOA"
+        msgid: "E1YKcnl-0001q3-UM@example.com"
+        status_message: "saved mail to INBOX"

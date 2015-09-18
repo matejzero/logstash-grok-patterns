@@ -1,0 +1,6 @@
+pattern: DOVECOT
+data: "lmtp(32352): Disconnect from local: Successful quit"
+results:
+        proto: "lmtp"
+        user: "32352"
+        status_message: "Disconnect from local: Successful quit"

@@ -1,0 +1,13 @@
+pattern: DOVECOT
+data: "pop3-login: proxy(username): disconnecting 2.2.2.2 (Disconnected by server): user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<gg7JEwwQ6QDBTZ2t>"
+results:
+        proto: "pop3"
+        proxy: "proxy"
+        user: "username"
+        conn_status: "disconnecting"
+        status_message: "Disconnected by server"
+        method: "PLAIN"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        crypto: "secured"
+        session: "gg7JEwwQ6QDBTZ2t"

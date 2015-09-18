@@ -1,0 +1,8 @@
+pattern: DOVECOT
+data: "pop3(username): Connection closed: Connection reset by peer top=0/0, retr=2/82331, del=6/168, size=50085176"
+results:
+        proto: "pop3"
+        user: "username"
+        conn_status: "Connection closed"
+        status_message: "Connection reset by peer"
+

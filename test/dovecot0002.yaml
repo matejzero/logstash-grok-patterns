@@ -1,0 +1,13 @@
+pattern: DOVECOT
+data: "pop3-login: Login: user=<username@example.com>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, mpid=8056, secured, session=<QWvifIcOtQBUFOyV>"
+results:
+        proto: "pop3"
+        conn_status: "Login"
+        user: "username"
+        domain: "example.com"
+        method: "PLAIN"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        mpid: 8056
+        crypto: secured
+        session: "QWvifIcOtQBUFOyV"

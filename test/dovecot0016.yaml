@@ -1,0 +1,11 @@
+pattern: DOVECOT
+data: "pop3-login: Disconnected (no auth attempts in 75 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, TLS: Disconnected, session=<u3bbz+wPcgAfD+Zs>"
+results:
+        proto: "pop3"
+        conn_status: "Disconnected"
+        status_message: "no auth attempts in 75 secs"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        crypto: "TLS"
+        error: "Disconnected"
+        session: "u3bbz+wPcgAfD+Zs"

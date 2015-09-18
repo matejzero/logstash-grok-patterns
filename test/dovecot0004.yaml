@@ -1,0 +1,7 @@
+pattern: DOVECOT
+data: "pop3(username): Disconnected: Logged out top=0/0, retr=0/0, del=0/0, size=0"
+results:
+        proto: "pop3"
+        user: "username"
+        conn_status: "Disconnected"
+        status_message: "Logged out"

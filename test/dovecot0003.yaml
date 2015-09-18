@@ -1,0 +1,9 @@
+pattern: DOVECOT
+data: "imap(username): Disconnected: Logged out in=93 out=956"
+results:
+        proto: "imap"
+        user: "username"
+        conn_status: "Disconnected"
+        status_message: "Logged out"
+        bytes_in: 93
+        bytes_out: 956

@@ -1,0 +1,9 @@
+pattern: DOVECOT
+data: "pop3-login: Disconnected: Inactivity (no auth attempts): rip=2.2.2.2, lip=5.5.5.5, TLS handshaking"
+results:
+        proto: "pop3"
+        conn_status: "Disconnected"
+        status_message: "no auth attempts"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        crypto: "TLS"

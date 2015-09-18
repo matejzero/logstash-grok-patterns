@@ -1,0 +1,14 @@
+pattern: DOVECOT
+data: "imap-login: proxy(username): started proxying to 2.2.2.2:143: user=<username>, method=PLAIN, rip=2.2.2.2, lip=5.5.5.5, secured, session=<GKEBFAwQMgDBAgFf>"
+results:
+        proto: "imap"
+        proxy: "proxy"
+        user: "username"
+        proxy_start: "proxying"
+        proxyto_host: "2.2.2.2"
+        proxyto_port: "143"
+        method: "PLAIN"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        crypto: secured
+        session: "GKEBFAwQMgDBAgFf"
