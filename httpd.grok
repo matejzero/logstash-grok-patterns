@@ -1,0 +1,8 @@
+# Grok filters for httpd logs
+
+#
+# 1 www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] "GET /folder1/page1 HTTP/1.1" 301 - "-" "Java/1.6.0_20"
+# 2 www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] "GET /folder1/folder2/ HTTP/1.0" 200 68095 "-" "Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.example.com/bot?+)"
+
+HTTPD %{HOSTNAME:http_vhost} %{IPORHOST:client_ip} %{USER} %{USER:http_user} \[%{HTTPDATE}\] "(?:%{WORD:http_action} %{NOTSPACE:http_request}(?: HTTP/%{NUMBER:http_version})?|%{DATA:rawrequest})" %{NUMBER:http_status_code} (?:%{NUMBER:bytes}|-) "%{DATA:http_referer}" "%{DATA:http_user_agent}"
+

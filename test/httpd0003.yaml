@@ -1,0 +1,15 @@
+pattern: HTTPD
+data: "www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] \"GET /folder1/folder2/file.gif HTTP/1.1\" 200 322133 \"http://www.example.com/page1\" \"Mozilla/5.0 (Linux; Android 5.1.1; SM-G920F Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Mobile Safari/537.36\""
+results:
+        http_vhost: "www.example.com"
+        client_ip: 2.2.2.2
+        http_user: "-"
+        http_action: "GET"
+        http_request: "/folder1/folder2/file.gif"
+        http_version: "1.1"
+        http_status_code: "200"
+        bytes: "322133"
+        http_referer: "http://www.example.com/page1"
+        http_user_agent: "Mozilla/5.0 (Linux; Android 5.1.1; SM-G920F Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Mobile Safari/537.36"
+
+

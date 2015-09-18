@@ -1,0 +1,14 @@
+pattern: HTTPD
+data: "www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] \"GET /folder1/folder2/ HTTP/1.0\" 200 68095 \"-\" \"Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.example.com/bot?+)\""
+results:
+        http_vhost: "www.example.com"
+        client_ip: 2.2.2.2
+        http_user: "-"
+        http_action: "GET"
+        http_request: "/folder1/folder2/"
+        http_version: "1.0"
+        http_status_code: "200"
+        bytes: "68095"
+        http_user_agent: "Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.example.com/bot?+)"
+
+

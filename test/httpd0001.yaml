@@ -1,0 +1,13 @@
+pattern: HTTPD
+data: "www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] \"GET /folder1/page1 HTTP/1.1\" 301 - \"-\" \"Java/1.6.0_20\""
+results:
+        http_vhost: "www.example.com"
+        client_ip: 2.2.2.2
+        http_user: "-"
+        http_action: "GET"
+        http_request: "/folder1/page1"
+        http_version: "1.1"
+        http_status_code: "301"
+        http_user_agent: "Java/1.6.0_20"
+
+
