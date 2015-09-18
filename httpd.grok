@@ -3,6 +3,7 @@
 #
 # 1 www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] "GET /folder1/page1 HTTP/1.1" 301 - "-" "Java/1.6.0_20"
 # 2 www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] "GET /folder1/folder2/ HTTP/1.0" 200 68095 "-" "Mozilla/5.0 (compatible; MJ12bot/v1.4.5; http://www.example.com/bot?+)"
+# 3 www.example.com 2.2.2.2 - - [10/Sep/2015:23:59:52 +0200] "GET /folder1/folder2/file.gif HTTP/1.1" 200 322133 "http://www.example.com/page1" "Mozilla/5.0 (Linux; Android 5.1.1; SM-G920F Build/LMY47X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.84 Mobile Safari/537.36"
 
 HTTPD %{HOSTNAME:http_vhost} %{IPORHOST:client_ip} %{USER} %{USER:http_user} \[%{HTTPDATE}\] "(?:%{WORD:http_action} %{NOTSPACE:http_request}(?: HTTP/%{NUMBER:http_version})?|%{DATA:rawrequest})" %{NUMBER:http_status_code} (?:%{NUMBER:bytes}|-) "%{DATA:http_referer}" "%{DATA:http_user_agent}"
 
