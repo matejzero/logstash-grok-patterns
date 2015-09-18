@@ -1,0 +1,9 @@
+pattern: GLASSFISH
+data: "[#|2015-09-18T08:48:55.039+0000|WARNING|glassfish3.1.2|javax.enterprise.system.container.web.com.sun.web.security|_ThreadID=110;_ThreadName=Thread-2;|WEB9102: Web Login Failed: com.sun.enterprise.security.auth.login.common.LoginException: Login failed: javax.security.auth.login.LoginException: User username not found.|#]"
+results:
+    timestamp: "2015-09-18T08:48:55.039+0000"
+    loglevel: "WARNING"
+    server_version: "glassfish3.1.2"
+    class: "javax.enterprise.system.container.web.com.sun.web.security"
+    thread: "_ThreadID=110;_ThreadName=Thread-2;"
+    message_detail: "WEB9102: Web Login Failed: com.sun.enterprise.security.auth.login.common.LoginException: Login failed: javax.security.auth.login.LoginException: User username not found."

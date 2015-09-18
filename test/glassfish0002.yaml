@@ -1,0 +1,7 @@
+pattern: GLASSFISH
+data: "2015-07-02 06:52:09,594 INFO  WelcomeController.doAfterCompose - BEGIN netId:user@example.org support service_admin"
+results:
+    timestamp: "2015-07-02 06:52:09,594"
+    loglevel: "INFO"
+    class: "WelcomeController.doAfterCompose"
+    message_detail: "BEGIN netId:user@example.org support service_admin"
