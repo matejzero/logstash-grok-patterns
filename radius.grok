@@ -13,7 +13,7 @@ RADIUS_USERNAME %{USERNAME:user}(@%{HOSTNAME:realm})?
 # 5 Login incorrect (  [ldap] User not found): [user@example.com] (from client client.example.com port 9 cli D0-B2-12-B4-F7-BB via TLS tunnel)
 # 6 Login incorrect: [user@example.com] (from client client.example.com port 33 cli D0-B2-12-B4-F7-BB via TLS tunnel)
 # 7 Login incorrect: [user] (from client client.example.com port 6 cli D0-B2-12-B4-F7-BB)
-RADIUS_LOGIN %{DATA:status}( \(%{SPACE}%{DATA:error}\))?: \[%{RADIUS_USERNAME:username}\] \(from client %{DATA:client} port %{NUMBER}( cli %{MAC:mac})?
+RADIUS_LOGIN Login %{DATA:status}( \(%{SPACE}%{DATA:error}\))?: \[%{RADIUS_USERNAME:username}\] \(from client %{DATA:client} port %{NUMBER}( cli %{MAC:mac})?
 
 # 8 Login incorrect: [<no User-Name attribute>] (from client client.example.com port 8102 cli D0-B2-12-B4-F7-BB)
 RADIUS_LOGINFAILED_NOUSERNAME %{DATA:status}: \[\<%{DATA:error}\>\] \(from client %{DATA:client} port %{NUMBER} cli %{MAC:mac}
