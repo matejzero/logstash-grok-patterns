@@ -16,7 +16,7 @@ RADIUS_USERNAME %{USERNAME:user}(@%{HOSTNAME:realm})?
 RADIUS_LOGIN Login %{DATA:status}( \(%{SPACE}%{DATA:error}\))?: \[%{RADIUS_USERNAME:username}\] \(from client %{DATA:client} port %{NUMBER}( cli %{MAC:mac})?
 
 # 8 Login incorrect: [<no User-Name attribute>] (from client client.example.com port 8102 cli D0-B2-12-B4-F7-BB)
-RADIUS_LOGINFAILED_NOUSERNAME %{DATA:status}: \[\<%{DATA:error}\>\] \(from client %{DATA:client} port %{NUMBER} cli %{MAC:mac}
+RADIUS_LOGINFAILED_NOUSERNAME Login %{DATA:status}: \[\<%{DATA:error}\>\] \(from client %{DATA:client} port %{NUMBER} cli %{MAC:mac}
 
 ### Other log
 # 9 rlm_eap: SSL error error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca
