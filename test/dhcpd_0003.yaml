@@ -1,0 +1,7 @@
+pattern: DHCPD_AAI_DISCOVER
+data: "DHCPDISCOVER from 00:25:b3:bf:94:88 via 10.0.0.1: unknown network segment"
+results:
+        via: "10.0.0.1"
+        mac: "00:25:b3:bf:94:88"
+        error: "unknown network segment"
+

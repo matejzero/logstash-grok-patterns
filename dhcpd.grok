@@ -4,8 +4,16 @@
 
 ### Custom
 # Custom DHCPD logs for AAI
-# 1 client: 10.0.3.106, mac: 0:25:b3:bf:94:88, shared network: 1234_network-test
-DHCPD_CUSTOM_AAI client: %{IP:client}, mac: %{MAC:mac}, shared network: %{GREEDYDATA:shared_network}
+# 1 client: 10.0.3.106, mac: 00:25:b3:bf:94:88, shared network: 1234_network-test
+DHCPD_AAI_CLIENT client: %{IP:client}, mac: %{MAC:mac}, shared network: %{GREEDYDATA:shared_network}
 
-DHCPD (%{DHCPD_CUSTOM_AAI})
+### Error logs
+# 1 DHCPDISCOVER from 00:25:b3:bf:94:88 via 10.0.0.1: network 1234_network-test: no free leases
+# 2 DHCPDISCOVER from 00:25:b3:bf:94:88 via 10.0.0.1: unknown network segment
+DHCPD_AAI_DISCOVER DHCPDISCOVER from %{MAC:mac} via %{IP:via}:( network %{DATA:shared_network}:)? %{GREEDYDATA:error}
+
+# 1 DHCPDECLINE of 10.0.3.106 from 00:25:b3:bf:94:88 (iPhone) via 10.0.0.1: abandoned
+DHCPD_AAI_DECLINE DHCPDECLINE of %{IP:client} from %{MAC:mac}( %{DATA})? via %{IP:via}: %{GREEDYDATA:error}
+
+DHCPD (%{DHCPD_AAI_CLIENT}|%{DHCPD_AAI_DISCOVER}|%{DHCPD_AAI_DECLINE})
 

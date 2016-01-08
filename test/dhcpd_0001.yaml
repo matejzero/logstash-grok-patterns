@@ -1,6 +1,6 @@
-pattern: DHCPD
-data: "client: 10.0.3.106, mac: f0:25:b3:bf:94:88, shared network: 1234_network-test"
+pattern: DHCPD_AAI_CLIENT
+data: "client: 10.0.3.106, mac: 00:25:b3:bf:94:88, shared network: 1234_network-test"
 results:
         client: "10.0.3.106"
-        mac: "f0:25:b3:bf:94:88"
+        mac: "00:25:b3:bf:94:88"
         shared_network: "1234_network-test"

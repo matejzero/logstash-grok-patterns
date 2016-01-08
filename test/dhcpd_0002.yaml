@@ -1,0 +1,7 @@
+pattern: DHCPD_AAI_DISCOVER
+data: "DHCPDISCOVER from 00:25:b3:bf:94:88 via 10.0.0.1: network 1234_network-test: no free leases"
+results:
+        via: "10.0.0.1"
+        mac: "00:25:b3:bf:94:88"
+        shared_network: "1234_network-test"
+        error: "no free leases"

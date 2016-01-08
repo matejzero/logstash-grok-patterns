@@ -1,0 +1,7 @@
+pattern: DHCPD_AAI_DECLINE
+data: "DHCPDECLINE of 10.0.3.106 from 00:25:b3:bf:94:88 (iPhone) via 10.0.0.1: abandoned"
+results:
+        client: "10.0.3.106"
+        via: "10.0.0.1"
+        mac: "00:25:b3:bf:94:88"
+        error: "abandoned"
