@@ -1,0 +1,9 @@
+pattern: DOVECOT
+data: "pop3-login: Disconnected (no auth attempts): rip=2.2.2.2, lip=5.5.5.5, TLS handshaking: SSL_accept() failed: error:150760FC:SSL routines:SSL23_GET_CLIENT_HELLO:unknown protocol"
+results:
+        proto: "pop3"
+        conn_status: "Disconnected"
+        status_message: "no auth attempts"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        error: "TLS handshaking: SSL_accept() failed: error:150760FC:SSL routines:SSL23_GET_CLIENT_HELLO:unknown protocol"

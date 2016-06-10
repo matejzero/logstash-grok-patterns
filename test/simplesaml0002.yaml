@@ -1,0 +1,6 @@
+pattern: SIMPLESAML
+data: "6 [cc6dd31137] idpDisco.saml20: Choice made [https://idp.sub.example.com/idp/20090116] (Redirecting the user back"
+results:
+        id: "cc6dd31137"
+        choice: "made"
+        idp: "https://idp.sub.example.com/idp/20090116"

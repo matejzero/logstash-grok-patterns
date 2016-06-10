@@ -1,0 +1,18 @@
+# Grok filters for SimpleSAML dashboards
+
+# Basic grok filters
+SIMPLESAML_NETID %{USERNAME:user}@%{HOSTNAME:realm}
+
+#### All logs are checked with TravisCI tests. The following logs are checked
+## Stat
+# 5 STAT [f15c15c5b9] saml20-idp-SSO https://sub.example.com/sp220090302 https://idp.sub.example.com/idp/20090116 user@host.com
+SIMPLESAML_STAT %{NUMBER} STAT \[%{DATA:id}\] saml20-idp-SSO %{URI:sp} %{URI:idp} %{SIMPLESAML_NETID:netid}
+## Choice made
+# 6 [cc6dd31137] idpDisco.saml20: Choice made [https://idp.sub.example.com/idp/20090116] (Redirecting the user back
+SIMPLESAML_IDPDISCOMADE %{NUMBER} \[%{DATA:id}\] idpDisco.saml20: Choice %{WORD:choice} \[%{URI:idp}\]
+
+## Using saved choice
+# 6 [214c654626] idpDisco.saml20: Using saved choice [https://idp.sub.example.com/idp/20090116]
+SIMPLESAML_IDPDISCOSAVED %{NUMBER} \[%{DATA:id}\] idpDisco.saml20: Using %{WORD:choice} choice \[%{URI:idp}\]
+
+SIMPLESAML (?:%{SIMPLESAML_STAT}|%{SIMPLESAML_IDPDISCOMADE}|%{SIMPLESAML_IDPDISCOSAVED})

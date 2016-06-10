@@ -1,0 +1,9 @@
+pattern: DOVECOT
+data: "pop3-login: Aborted login (no auth attempts in 0 secs): user=<>, rip=2.2.2.2, lip=5.5.5.5, session=<Q4nfkMAPTQDBAhKu>"
+results:
+        proto: "pop3"
+        conn_status: "Aborted login"
+        status_message: "no auth attempts in 0 secs"
+        rip: 2.2.2.2
+        lip: 5.5.5.5
+        session: "Q4nfkMAPTQDBAhKu"

@@ -1,0 +1,6 @@
+pattern: SIMPLESAML
+data: "6 [214c654626] idpDisco.saml20: Using saved choice [https://idp.sub.example.com/idp/20090116]"
+results:
+        id: "214c654626"
+        choice: "saved"
+        idp: "https://idp.sub.example.com/idp/20090116"

@@ -1,0 +1,7 @@
+pattern: SIMPLESAML
+data: "5 STAT [f15c15c5b9] saml20-idp-SSO https://sub.example.com/sp220090302 https://idp.sub.example.com/idp/20090116 user@host.com"
+results:
+        id: "f15c15c5b9"
+        sp: "https://sub.example.com/sp220090302"
+        idp: "https://idp.sub.example.com/idp/20090116"
+        netid: "user@host.com"
